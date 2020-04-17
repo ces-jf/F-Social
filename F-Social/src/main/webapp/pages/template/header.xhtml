@@ -5,6 +5,7 @@
     xmlns:p="http://primefaces.org/ui">
  
     <h:form>
+        <p:growl  showDetail="true" sticky="false" life="3000"/>
         <p:menubar>
             <p:menuitem value="Principal" icon="ui-icon-home" />
             <p:submenu label="Programa Social" icon="ui-icon-document">
@@ -13,8 +14,11 @@
                     <p:menuitem value="Consultar" icon="ui-icon-document" />
                 </p:submenu>
             </p:submenu>
+            <p:menuitem value="#{usuarioController.usuario.nome}"></p:menuitem>
             <f:facet name="options">            
-                <p:commandButton value="Sair" icon="ui-icon-extlink"/>
+                <p:commandButton action="#{usuarioController.logOut()}"
+                                 value="Sair" 
+                                 icon="ui-icon-extlink"/>   
             </f:facet>
         </p:menubar>
     </h:form>
