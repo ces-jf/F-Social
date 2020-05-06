@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+        template="/pages/template/layout.xhtml"
+        xmlns:p="http://primefaces.org/ui">
+ 
+    <ui:define name="content">
+        <f:view>
+            <h:form id="pagForm">
+                
+                <p:dataTable id="pagDataTable" 
+                             value="#{pagamentoBFBean.todosPagamentos}" 
+                             var="pagamento" 
+                             lazy="true"
+                             paginator="true" 
+                             rows="10"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="10,25,50,100" 
+                             reflow="true" 
+                             resizableColumns="true" 
+                             liveResize="true" 
+                             style="width: 90%; margin-left: 5%;margin-right: 5%; margin-top: 2%; text-align: center">
+                    
+                    <p:column style="width:25px;text-align: center">
+                        <p:commandButton update=":pagDetail" oncomplete="PF('pagDialog').show()" icon="ui-icon-details" title="Visualizar">
+                            <f:setPropertyActionListener value="#{pagamento}" target="#{pagamentoBFBean.pagamento}" />
+                        </p:commandButton>
+                    </p:column>
+                  
+                    <p:column headerText="Mês Referência">
+                        <h:outputText value="#{pagamento.mes_referencia}" />
+                    </p:column>
+                    <p:column headerText="Mês Competência">
+                        <h:outputText value="#{pagamento.mes_competencia}" />
+                    </p:column>
+                    <p:column headerText="UF">
+                        <h:outputText value="#{pagamento.uf}" />
+                    </p:column>
+                    <p:column headerText="Siafi Município">
+                        <h:outputText value="#{pagamento.codigo_municipio_siafi}" />
+                    </p:column>
+                    <p:column headerText="Nome Município">
+                        <h:outputText value="#{pagamento.nome_municipio}" />
+                    </p:column>
+                    <p:column headerText="NIS Favorecido">
+                        <h:outputText value="#{pagamento.nis_favorecido}" />
+                    </p:column>
+                    <p:column headerText="Nome Favorecido">
+                        <h:outputText value="#{pagamento.nome_favorecido}" />
+                    </p:column>
+                    <p:column headerText="Valor Parcela">
+                        <h:outputText value="R$ #{pagamento.valor_parcela}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+            
+            <p:dialog header="Dados do Pagamento" widgetVar="pagDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="pagDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty pagamentoBFBean.pagamento}" columnClasses="label,value">
+                        <f:facet name="header">
+                            <h:outputText value="Nome Favorecido: " />
+                            <h:outputText value="#{pagamentoBFBean.pagamento.nome_favorecido}" />
+                        </f:facet>
+
+                        <h:outputText value="Nome Município" />
+                        <h:outputText value="#{pagamentoBFBean.pagamento.nome_municipio}" />
+
+                        <h:outputText value="Siafi Município" />
+                        <h:outputText value="#{pagamentoBFBean.pagamento.codigo_municipio_siafi}" />
+
+                        <h:outputText value="UF" />
+                        <h:outputText value="#{pagamentoBFBean.pagamento.uf}" />
+
+                        <h:outputText value="Mês Referência" />
+                        <h:outputText value="#{pagamentoBFBean.pagamento.mes_referencia}" />
+
+                        <h:outputText value="Mês Competência" />
+                        <h:outputText value="#{pagamentoBFBean.pagamento.mes_competencia}" />
+
+                        <h:outputText value="NIS Favorecido" />
+                        <h:outputText value="#{pagamentoBFBean.pagamento.nis_favorecido}" />
+                        
+                        <h:outputText value="Valor Parcela" />
+                        <h:outputText value="R$ #{pagamentoBFBean.pagamento.valor_parcela}" />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+   
+        </f:view>
+        
+    </ui:define>
+
+</ui:composition>

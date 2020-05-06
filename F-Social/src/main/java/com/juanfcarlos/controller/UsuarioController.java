@@ -5,8 +5,10 @@
  */
 package com.juanfcarlos.controller;
 
+import com.juanfcarlos.elasticsearch.ElasticSearchConfig;
 import com.juanfcarlos.model.Usuario;
 import com.juanfcarlos.util.Atribuicao;
+import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -41,7 +43,7 @@ public class UsuarioController extends AbstractController {
         this.usuario = usuario;
     }
     
-    public String logOut() {
+    public String logOut() throws IOException {
         ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
         displayInfoMessage("Sessão Finalizada", usuario.getNome() + "!");
         return "login";

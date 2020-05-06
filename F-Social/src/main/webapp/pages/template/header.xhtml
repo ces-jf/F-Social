@@ -7,14 +7,13 @@
     <h:form>
         <p:growl  showDetail="true" sticky="false" life="3000"/>
         <p:menubar>
-            <p:menuitem value="Principal" icon="ui-icon-home" />
+            <p:menuitem value="Principal" icon="ui-icon-home" action="#{navigationController.index()}" />
             <p:submenu label="Programa Social" icon="ui-icon-document">
                 <p:submenu label="Bolsa Família" icon="ui-icon-document">
                     <p:menuitem value="Classificar" icon="ui-icon-document" />
-                    <p:menuitem value="Consultar" icon="ui-icon-document" />
+                    <p:menuitem value="Consultar" icon="ui-icon-document" action="#{navigationController.bolsaConsulta()}" />
                 </p:submenu>
             </p:submenu>
-            <p:menuitem value="#{usuarioController.usuario.nome}"></p:menuitem>
             <f:facet name="options">            
                 <p:commandButton action="#{usuarioController.logOut()}"
                                  value="Sair" 

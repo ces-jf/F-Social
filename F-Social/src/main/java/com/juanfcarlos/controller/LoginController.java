@@ -5,8 +5,10 @@
  */
 package com.juanfcarlos.controller;
 
+import com.juanfcarlos.elasticsearch.ElasticSearchConfig;
 import com.juanfcarlos.dao.UsuarioDao;
 import com.juanfcarlos.model.Usuario;
+import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -57,7 +59,7 @@ public class LoginController extends AbstractController {
         return usuario;
     }
     
-    public String entrar() {
+    public String entrar() throws IOException {
         Usuario usuario = isValidLogin(login, senha);
         
         if(usuario != null) {
@@ -66,6 +68,7 @@ public class LoginController extends AbstractController {
             HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
             request.getSession().setAttribute("usuario", usuario);
             displayInfoMessage("Seja Bem-Vindo", usuario.getNome() + "!");
+           
             return "index";
         }
         
