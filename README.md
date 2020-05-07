@@ -26,7 +26,7 @@ Uma Plataforma para identificação de fraudes em Programas Sociais
   ``` Config
     input {
       file {
-        path => "/media/Unidade-D/Meu TCC/Bolsa Familia/202002_BolsaFamilia_Pagamentos.csv"
+        path => "202002_BolsaFamilia_Pagamentos.csv"
         start_position => "beginning"
         sincedb_path => "logstash.txt"
       }
@@ -75,7 +75,7 @@ Uma Plataforma para identificação de fraudes em Programas Sociais
       elasticsearch {
         hosts => ["http://localhost:9200"]
         index => "bolsafamilia"
-        document_type => "pagamentos_202001"
+        document_type => "pagamentos"
       }
       stdout {
 
