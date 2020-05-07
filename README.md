@@ -24,59 +24,63 @@ Uma Plataforma para identificação de fraudes em Programas Sociais
   - Faça o [Download dos Dados](http://www.portaltransparencia.gov.br/download-de-dados/bolsa-familia-pagamentos/202001) e descompacte o arquivo.
   - No mesmo local do arquivo CSV crie um arquivo chamado bolsalogstash.conf e insira o seguinte:
   ``` Config
-  input {
-    file {
-      path => "202001_BolsaFamilia_Pagamentos.csv"
-      start_position => "beginning"
-      sincedb_path => "logstash.txt"
-    }
-  }
-
-  filter {
-    csv {
-      separator => ";"
-      columns => ["MES REFERENCIA",
-                  "MES COMPETENCIA",
-                  "UF",
-                  "CODIGO MUNICIPIO SIAFI",
-                  "NOME MUNICIPIO",
-                  "NIS FAVORECIDO",
-                  "NOME FAVORECIDO",
-                  "VALOR PARCELA" ]
-    }
-    date {
-      match => [ "MES REFERENCIA", "yyyyMM" ]
-    }
-    date {
-      match => [ "MES COMPETENCIA", "yyyyMM" ]
-    }
-    mutate {
-      convert => {
-        "CODIGO MUNICIPIO SIAFI" => "integer"
+    input {
+      file {
+        path => "/media/Unidade-D/Meu TCC/Bolsa Familia/202002_BolsaFamilia_Pagamentos.csv"
+        start_position => "beginning"
+        sincedb_path => "logstash.txt"
       }
     }
-    mutate {
-      convert => {
-        "NIS FAVORECIDO" => "integer"
+
+    filter {
+      csv {
+        separator => ";"
+        columns => ["MES REFERENCIA",
+                    "MES COMPETENCIA",
+                    "UF",
+                    "CODIGO MUNICIPIO SIAFI",
+                    "NOME MUNICIPIO",
+                    "NIS FAVORECIDO",
+                    "NOME FAVORECIDO",
+                    "VALOR PARCELA" ]
+      }
+      date {
+        match => [ "MES REFERENCIA", "yyyyMM" ]
+        timezone => "UTC"
+        target => "MES REFERENCIA"
+      }
+      date {
+        match => [ "MES COMPETENCIA", "yyyyMM" ]
+        timezone => "UTC"
+        target => "MES COMPETENCIA"
+      }
+      mutate {
+        convert => {
+          "CODIGO MUNICIPIO SIAFI" => "integer"
+        }
+      }
+      mutate {
+        convert => {
+          "NIS FAVORECIDO" => "integer"
+        }
+      }
+      mutate {
+        convert => {
+          "VALOR PARCELA" => "float_eu"
+        }
       }
     }
-    mutate {
-      convert => {
-        "VALOR PARCELA" => "float_eu"
+
+    output {
+      elasticsearch {
+        hosts => ["http://localhost:9200"]
+        index => "bolsafamilia"
+        document_type => "pagamentos_202001"
+      }
+      stdout {
+
       }
     }
-  }
-
-  output {
-    elasticsearch {
-      hosts => ["http://localhost:9200"]
-      index => "bolsafamilia"
-      document_type => "pagamentos_202001"
-    }
-    stdout {
-
-    }
-  }
   ```
   * Abra um Terminal na pasta do arquivo CSV e .Conf e:
     - Windows - `$ bin/logstash -f bolsalogstash.conf`
