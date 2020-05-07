@@ -45,10 +45,10 @@ Uma Plataforma para identificação de fraudes em Programas Sociais
                   "VALOR PARCELA" ]
     }
     date {
-      match => [ "MES REFERENCIA", "yyyymm" ]
+      match => [ "MES REFERENCIA", "yyyyMM" ]
     }
     date {
-      match => [ "MES COMPETENCIA", "yyyymm" ]
+      match => [ "MES COMPETENCIA", "yyyyMM" ]
     }
     mutate {
       convert => {
