@@ -5,6 +5,7 @@
  */
 package com.juanfcarlos.controller;
 
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -15,7 +16,7 @@ import javax.faces.bean.SessionScoped;
 
 @SessionScoped
 @ManagedBean(name = "navigationController")
-public class NavigationController extends AbstractController {
+public class NavigationController extends AbstractController implements Serializable {
     
     public String bolsaConsulta() {
         return "bolsaConsulta";

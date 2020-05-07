@@ -5,14 +5,16 @@
  */
 package com.juanfcarlos.model;
 
+import java.util.Date;
+
 /**
  *
  * @author Juan Ferreira Carlos <juanfcarlos.93@gmail.com>
  */
 public class PagamentoBF {
     
-    private String mes_referencia;
-    private String mes_competencia;
+    private Date mes_referencia;
+    private Date mes_competencia;
     private String uf;
     private int codigo_municipio_siafi;
     private String nome_municipio;
@@ -23,7 +25,7 @@ public class PagamentoBF {
     public PagamentoBF() {
     }
 
-    public PagamentoBF(String mes_referencia, String mes_competencia, String uf, int codigo_municipio_siafi, String nome_municipio, Long nis_favorecido, String nome_favorecido, Double valor_parcela) {
+    public PagamentoBF(Date mes_referencia, Date mes_competencia, String uf, int codigo_municipio_siafi, String nome_municipio, Long nis_favorecido, String nome_favorecido, Double valor_parcela) {
         this.mes_referencia = mes_referencia;
         this.mes_competencia = mes_competencia;
         this.uf = uf;
@@ -34,19 +36,19 @@ public class PagamentoBF {
         this.valor_parcela = valor_parcela;
     }
     
-    public String getMes_referencia() {
+    public Date getMes_referencia() {
         return mes_referencia;
     }
 
-    public void setMes_referencia(String mes_referencia) {
+    public void setMes_referencia(Date mes_referencia) {
         this.mes_referencia = mes_referencia;
     }
 
-    public String getMes_competencia() {
+    public Date getMes_competencia() {
         return mes_competencia;
     }
 
-    public void setMes_competencia(String mes_competencia) {
+    public void setMes_competencia(Date mes_competencia) {
         this.mes_competencia = mes_competencia;
     }
 

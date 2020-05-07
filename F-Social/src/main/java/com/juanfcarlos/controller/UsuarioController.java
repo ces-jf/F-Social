@@ -5,10 +5,10 @@
  */
 package com.juanfcarlos.controller;
 
-import com.juanfcarlos.elasticsearch.ElasticSearchConfig;
 import com.juanfcarlos.model.Usuario;
 import com.juanfcarlos.util.Atribuicao;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 
 @SessionScoped
 @ManagedBean(name = "usuarioController")
-public class UsuarioController extends AbstractController {
+public class UsuarioController extends AbstractController implements Serializable {
     
     public static final String INJECTION_NAME = "#{usuarioController}";
     

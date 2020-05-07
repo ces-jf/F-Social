@@ -41,9 +41,5 @@ public class ElasticSearchConfig implements Constante{
         restHighLevelClient.close();
         restHighLevelClient = null;
     }
-
-    public static RestHighLevelClient getRestHighLevelClient() {
-        return restHighLevelClient;
-    }
     
 }

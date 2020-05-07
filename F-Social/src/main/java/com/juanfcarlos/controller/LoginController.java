@@ -5,10 +5,10 @@
  */
 package com.juanfcarlos.controller;
 
-import com.juanfcarlos.elasticsearch.ElasticSearchConfig;
 import com.juanfcarlos.dao.UsuarioDao;
 import com.juanfcarlos.model.Usuario;
 import java.io.IOException;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RequestScoped
 @ManagedBean
-public class LoginController extends AbstractController {
+public class LoginController extends AbstractController implements Serializable {
     
     @ManagedProperty(value = UsuarioController.INJECTION_NAME)
     private UsuarioController usuarioController;

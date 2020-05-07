@@ -17,7 +17,7 @@ public interface Constante {
     public static final String SCHEME = "http";
 
     public static final String INDEX = "bolsafamilia";
-    public static final String TYPE = "pagamentos_202001";
+    public static final String TYPE = "pagamentos";
 
     
 }

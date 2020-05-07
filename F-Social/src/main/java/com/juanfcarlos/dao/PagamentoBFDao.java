@@ -7,8 +7,11 @@ package com.juanfcarlos.dao;
 
 import com.juanfcarlos.elasticsearch.ElasticSearchConfig;
 import com.juanfcarlos.model.PagamentoBF;
-import static com.juanfcarlos.util.Constante.INDEX;
+import com.juanfcarlos.util.Constante;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,11 +29,11 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
  * @author Juan Ferreira Carlos <juanfcarlos.93@gmail.com>
  */
 
-public class PagamentoBFDao {
+public class PagamentoBFDao implements Constante {
     
     private static RestHighLevelClient restHighLevelClient;
     
-    public ArrayList<PagamentoBF> todosPagamentos() throws IOException {
+    public ArrayList<PagamentoBF> todosPagamentos() throws IOException, ParseException {
            
         restHighLevelClient = ElasticSearchConfig.initConnection();
         
@@ -50,8 +53,10 @@ public class PagamentoBFDao {
             
             PagamentoBF pag = new PagamentoBF();
             
-            pag.setMes_competencia((String) mapPag.get("MES COMPETENCIA"));
-            pag.setMes_referencia((String) mapPag.get("MES REFERENCIA"));
+            DateFormat date = new SimpleDateFormat("yyyy-MM");
+            
+            pag.setMes_competencia(date.parse((String) mapPag.get("MES COMPETENCIA")));
+            pag.setMes_referencia(date.parse((String) mapPag.get("MES REFERENCIA")));
             pag.setNis_favorecido((Long) mapPag.get("NIS FAVORECIDO"));
             pag.setNome_favorecido((String) mapPag.get("NOME FAVORECIDO"));
             pag.setNome_municipio((String) mapPag.get("NOME MUNICIPIO"));
@@ -67,12 +72,8 @@ public class PagamentoBFDao {
         return result;
     } 
     
-    public int countTodosPagamentos() {
-         if (restHighLevelClient == null) {
-            ElasticSearchConfig.initConnection();
-            restHighLevelClient = ElasticSearchConfig.getRestHighLevelClient();
-        }
-        
+    public int countTodosPagamentos() throws IOException {
+               
         return 10000;
     }
 }

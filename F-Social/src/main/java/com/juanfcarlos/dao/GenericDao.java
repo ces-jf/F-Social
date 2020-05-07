@@ -16,12 +16,13 @@ import javax.transaction.Transactional;
 /**
  *
  * @author Juan Ferreira Carlos <juanfcarlos.93@gmail.com>
+ * @param <T>
  */
 
 @Transactional
-public class GenericDao<T> implements Serializable{
+public class GenericDao<T> implements Serializable {
     
-    private Class<T> entityClass;
+    private final Class<T> entityClass;
     
     public GenericDao(Class<T> entity) {
         this.entityClass = entity;
