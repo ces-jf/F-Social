@@ -5,7 +5,7 @@
     xmlns:p="http://primefaces.org/ui">
     
     <div style="margin-top: 10px">
-        F-Social - <h:outputText value="#{usuarioController.usuario.nome}" />
+        <h:outputText value="F-Social - #{usuarioController.usuario.nome}" rendered="#{usuarioController.usuario != null}" />
     </div>
     
 </ui:composition>

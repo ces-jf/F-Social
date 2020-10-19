@@ -1,51 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-  
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<h:outputStylesheet library="css" name="default.css"/>
-    </h:head>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+        template="/pages/template/layout.xhtml"
+        xmlns:p="http://primefaces.org/ui">
  
-    <h:body style="display:flex;">
- 	<h:form style=" margin:auto;">
-            <p:panel id="panel-login-principal" 
+    <ui:define name="content">
+        <div id="form-login"> 
+            <h:form>
+                <p:panel id="panel-login-principal" 
                     header="Acessar" 
-                    footer="Sistema F-Social" 
-		    style="width:400px;">
+                    footer="Sistema F-Social" >
                 
-                <p:growl showDetail="true" sticky="false" life="3000"/>
-            
-                <h:panelGrid columns="2" cellpadding="10">
-                    <p:graphicImage url="/resources/imagens/locked.png" />
-                    <h:panelGrid columns="2" cellpadding="5">
-	            	<p:outputLabel value="Login"/>
-	            	<p:inputText id="inputText-login" 
-                                     label="Login"
-                                     rendered="true"
-                                     value="#{loginController.login}"/>
-	            	<p:outputLabel value="Senha"/>
-	            	<p:password id="password-usuario" 
-                                    label="Password"
-                                    rendered="true"
-                                    autocomplete="false"
-                                    value="#{loginController.senha}"/>
-                        
-	            	<p:commandButton value="Autenticar" 
-	            			 id="commandButton-acessar"
-                                         ajax="false"
-					 icon="ui-icon-gear"
-                                         action="#{loginController.entrar()}"/>
-	            </h:panelGrid>
-	        </h:panelGrid>
-	    </p:panel>
-	</h:form>
-    </h:body>
-</html>
+                    <p:growl showDetail="true" sticky="false" life="3000"/>
+    
+                    <h:panelGrid columns="2" cellpadding="10" >
+                        <p:graphicImage url="/resources/imagens/locked.png" />
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel value="Login"/>
+                            <p:inputText id="inputText-login" 
+                                         label="Login"
+                                         rendered="true"
+                                         value="#{loginController.login}"/>
+                            <p:outputLabel value="Senha"/>
+                            <p:password id="password-usuario" 
+                                        label="Password"
+                                        rendered="true"
+                                        autocomplete="false"
+                                        value="#{loginController.senha}"/>
+
+                            <p:commandButton value="Autenticar" 
+                                             id="commandButton-acessar"
+                                             ajax="false"
+                                             icon="ui-icon-gear"
+                                             action="#{loginController.entrar()}"/>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>   
+        </div>
+    </ui:define>
+ 
+</ui:composition>

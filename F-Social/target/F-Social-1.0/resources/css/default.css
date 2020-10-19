@@ -22,30 +22,39 @@ html,
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fff;
-    position: relative;
-    padding-bottom: 58px;
-    min-height: 100vh;   
+    margin: 0;
+    height: 100%;  
+}
+
+#wrapper {
+   height: 100vh;
+   display: grid;
+   grid-template-rows: 30px 1fr 30px;
 }
 
 #content {
-    width: 90vw;
-    margin: 0 auto;
-    padding: 3px 2px;
+   overflow-y: scroll;
 }
 
 #header {
     text-align: center;
     background-color: #333;
     color: #fff;
-    padding: 5px;
+    padding: 15px;
 }
 
 #footer {
     text-align: center;
     background-color: #333;
     color: #fff;
-    padding: 2px;
-    bottom: 0;
-    width: 100%;
-    position: absolute;
+}
+
+#form-login {
+    left:50%;
+    top:50%;
+    margin-left:-200px; /* Metade do valor da Largura */
+    margin-top:-100px; /* Metade da valor da Altura */
+    position:absolute;
+    width:400px; /* Valor da Largura */
+    height: 200px; /* Valor da Altura */
 }

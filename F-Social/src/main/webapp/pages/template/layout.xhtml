@@ -23,14 +23,16 @@ and open the template in the editor.
         </h:head>
 
         <h:body>
-            <div class="ui-fluid" id="header">
-                <ui:include src="header.xhtml"/>
-            </div>
-            <div class="ui-fluid" id="content">
-                <ui:insert name="content"></ui:insert>
-            </div>
-            <div class="ui-fluid" id="footer">
-                <ui:include src="footer.xhtml"/>
+            <div id="wrapper">
+                <div class="ui-fluid" id="header">
+                    <ui:include src="header.xhtml"/>
+                </div>
+                <div class="ui-fluid" id="content">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+                <div class="ui-fluid" id="footer">
+                    <ui:include src="footer.xhtml"/>
+                </div>
             </div>
         </h:body>
         

@@ -4,7 +4,7 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:p="http://primefaces.org/ui">
  
-    <h:form>
+    <h:form rendered="#{usuarioController.usuario != null}">
         <p:growl  showDetail="true" sticky="false" life="3000"/>
         <p:menubar>
             <p:menuitem value="Principal" icon="ui-icon-home" action="#{navigationController.index()}" />

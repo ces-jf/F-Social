@@ -3,6 +3,7 @@ com/juanfcarlos/elasticsearch/ElasticSearchConfig.class
 com/juanfcarlos/controller/LoginController.class
 com/juanfcarlos/controller/AbstractController.class
 com/juanfcarlos/util/JPAUtil.class
+com/juanfcarlos/util/Exportador.class
 com/juanfcarlos/model/PagamentoBF.class
 com/juanfcarlos/bean/PagamentoBFBean.class
 com/juanfcarlos/dao/UsuarioDao.class
@@ -17,3 +18,4 @@ com/juanfcarlos/dao/GenericDao.class
 com/juanfcarlos/controller/NavigationController.class
 com/juanfcarlos/lazymodel/PagamentoBFLazyList.class
 com/juanfcarlos/model/Usuario_.class
+.netbeans_automatic_build
