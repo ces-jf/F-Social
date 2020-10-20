@@ -22,6 +22,10 @@ public class NavigationController extends AbstractController implements Serializ
         return "bolsaConsulta";
     }
     
+    public String bolsaClassifica() {
+        return "bolsaClassifica";
+    }
+    
     public String index() {
         return "index";
     }

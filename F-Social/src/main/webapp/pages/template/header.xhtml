@@ -10,7 +10,7 @@
             <p:menuitem value="Principal" icon="ui-icon-home" action="#{navigationController.index()}" />
             <p:submenu label="Programa Social" icon="ui-icon-document">
                 <p:submenu label="Bolsa Família" icon="ui-icon-document">
-                    <p:menuitem value="Classificar" icon="ui-icon-document" />
+                    <p:menuitem value="Classificar" icon="ui-icon-document" action="#{navigationController.bolsaClassifica()}"/>
                     <p:menuitem value="Consultar" icon="ui-icon-document" action="#{navigationController.bolsaConsulta()}" />
                 </p:submenu>
             </p:submenu>

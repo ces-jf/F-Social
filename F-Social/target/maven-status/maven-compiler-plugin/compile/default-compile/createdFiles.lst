@@ -3,6 +3,7 @@ com/juanfcarlos/elasticsearch/ElasticSearchConfig.class
 com/juanfcarlos/controller/LoginController.class
 com/juanfcarlos/controller/AbstractController.class
 com/juanfcarlos/util/JPAUtil.class
+com/juanfcarlos/util/LazySorter.class
 com/juanfcarlos/util/Exportador.class
 com/juanfcarlos/model/PagamentoBF.class
 com/juanfcarlos/bean/PagamentoBFBean.class

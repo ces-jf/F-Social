@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+        template="/pages/template/layout.xhtml"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+ 
+    <ui:define name="content">
+        <h:form>
+ 
+ 
+        <p:dataTable id="tbl" var="car" value="#{pagamentoBFBean.todosPagamentos}" lazy="true" sortMode="single" filteredValue=""
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+ 
+        <f:facet name="{Exporters}">
+            <div style="float:right;padding-top: 5px;">
+                <h:commandLink>
+                    <p:graphicImage name="icons/excel.png" width="24"/>
+                    <p:dataExporter type="xls" target="tbl" fileName="cars" />
+                </h:commandLink>
+                 
+                <h:commandLink>
+                    <p:graphicImage name="icons/xlsx.png" width="24"/>
+                    <p:dataExporter type="xlsxstream" target="tbl" fileName="cars" />
+                </h:commandLink>
+ 
+                <h:commandLink>
+                    <p:graphicImage name="icons/pdf.png" width="24"/>
+                    <p:dataExporter type="pdf" target="tbl" fileName="cars"/>
+                </h:commandLink>
+ 
+                <h:commandLink>
+                    <p:graphicImage name="icons/csv.png" width="24"/>
+                    <p:dataExporter type="csv" target="tbl" fileName="cars" />
+                </h:commandLink>
+ 
+                <h:commandLink>
+                    <p:graphicImage name="icons/xml.png" width="24"/>
+                    <p:dataExporter type="xml" target="tbl" fileName="cars" />
+                </h:commandLink>
+                 
+                <h:commandLink>
+                    <p:graphicImage name="icons/keyboardpencil.png" width="24"/>
+                    <p:dataExporter type="text" target="tbl" fileName="cars" exporter="#{pagamentoBFBean.exportador}"/>
+                </h:commandLink>                        
+            </div>
+        </f:facet>
+ 
+                <p:column headerText="Id" sortBy="#{car.nis_favorecido}">
+                    <h:outputText value="#{car.nis_favorecido}" />
+        </p:column>
+ 
+    </p:dataTable>
+ 
+    <h3>Export Page Data Only</h3>
+    <h:commandLink>
+        <p:graphicImage name="icons/excel.png" />
+        <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="icons/pdf.png" />
+        <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="icons/csv.png" />
+        <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="icons/xml.png" />
+        <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+</h:form>
+        
+    </ui:define>
+    
+</ui:composition>

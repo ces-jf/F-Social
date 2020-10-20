@@ -1,4 +1,5 @@
 /home/juan/GitHub/NetBeans/F-Social/F-Social/src/main/java/com/juanfcarlos/controller/AbstractController.java
+/home/juan/GitHub/NetBeans/F-Social/F-Social/src/main/java/com/juanfcarlos/util/LazySorter.java
 /home/juan/GitHub/NetBeans/F-Social/F-Social/src/main/java/com/juanfcarlos/elasticsearch/ElasticSearchConfig.java
 /home/juan/GitHub/NetBeans/F-Social/F-Social/src/main/java/com/juanfcarlos/lazymodel/PagamentoBFLazyList.java
 /home/juan/GitHub/NetBeans/F-Social/F-Social/src/main/java/com/juanfcarlos/controller/UsuarioController.java

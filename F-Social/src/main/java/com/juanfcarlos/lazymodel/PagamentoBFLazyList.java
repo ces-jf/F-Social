@@ -14,8 +14,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SortOrder;
+import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
-import org.primefaces.model.SortOrder;
+import org.primefaces.model.SortMeta;
 
 /**
  *
@@ -26,9 +28,9 @@ public class PagamentoBFLazyList extends LazyDataModel<PagamentoBF> {
     private static final long serialVersionUID = 1L;
     private ArrayList<PagamentoBF> pagamentos;
     private PagamentoBFDao pagamentoBFDao;
-
+        
     @Override
-    public List<PagamentoBF> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
+    public List<PagamentoBF> load(int first, int pageSize, Map<String, SortMeta> sortMeta, Map<String, FilterMeta> filterMeta) {
         try {
             pagamentoBFDao = new PagamentoBFDao();
             try {
